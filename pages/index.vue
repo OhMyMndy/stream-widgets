@@ -13,7 +13,7 @@
           This is a collection of hand crafted widgets for your stream.
         </p>
 
-        <a href="/rtirl/test">Test</a>
+        <a :href="origin + '/rtirl/test'">Test</a>
       </div>
 
       <div>
@@ -24,4 +24,6 @@
   </div>
 </template>
 <script setup lang="ts">
+let origin = useRequestURL().host
+
 </script>

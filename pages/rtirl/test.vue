@@ -1,10 +1,7 @@
 <script setup lang="ts">
   import RtirlWidgetDemo from "~/components/RtirlWidgetDemo.vue";
 
-  let origin = ""
-  if (window !== undefined) {
-    origin = window.location.origin
-  }
+  let origin = useRequestURL().host
 
 </script>
 <template>
