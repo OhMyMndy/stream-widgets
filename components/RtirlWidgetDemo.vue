@@ -1,5 +1,7 @@
 <script setup lang="ts">
-let origin = useRequestURL().origin
+const config = useRuntimeConfig();
+const origin = useRequestURL().origin + config.app.baseURL
+
 
 const props = defineProps({
   id: {type: String, default: null},
@@ -10,7 +12,7 @@ const props = defineProps({
 })
 
 function generateURL() {
-  let url = new URL(origin + '/rtirl')
+  let url = new URL(origin + 'rtirl')
   let params = {}
   if (props.id) {
     params.id = props.id
@@ -31,6 +33,7 @@ function generateURL() {
 let url = ref(generateURL())
 </script>
 <template>
+
   <div class="mb-4">
     <p class="font-bold">{{ description }}</p>
     <i>{{ url }}</i>

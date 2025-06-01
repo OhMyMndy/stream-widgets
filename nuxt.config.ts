@@ -7,6 +7,9 @@ export default defineNuxtConfig({
     devtools: {enabled: true},
     // css: ['~/assets/css/main.css'],
     ssr: false,
+    app: {
+        baseURL: process.env.NUXT_APP_BASE_URL || '/',
+    },
 
     modules: [
         '@nuxt/eslint',

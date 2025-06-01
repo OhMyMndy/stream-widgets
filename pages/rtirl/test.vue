@@ -1,7 +1,9 @@
 <script setup lang="ts">
   import RtirlWidgetDemo from "~/components/RtirlWidgetDemo.vue";
 
-  let origin = useRequestURL().origin
+  const config = useRuntimeConfig();
+  const origin = useRequestURL().origin + config.app.baseURL
+
 
 
 </script>

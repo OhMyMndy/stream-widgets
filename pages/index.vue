@@ -17,7 +17,7 @@ let origin = useRequestURL().origin
           This is a collection of hand crafted widgets for your stream.
         </p>
 
-<!--        <a :href="origin + '/rtirl/test'">Test</a>-->
+        <NuxtLink href="/rtirl/test">Test</NuxtLink>
       </div>
 
       <div>
