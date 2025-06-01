@@ -1,8 +1,6 @@
 <script setup lang="ts">
-let origin = ""
-if (window !== undefined) {
-  origin = window.location.origin
-}
+let origin = useRequestURL().host
+
 const props = defineProps({
   id: {type: String, default: null},
   lat: {type: String, default: null},
