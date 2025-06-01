@@ -1,5 +1,5 @@
 <script setup lang="ts">
-let origin = useRequestURL().host
+let origin = useRequestURL().origin
 
 const props = defineProps({
   id: {type: String, default: null},

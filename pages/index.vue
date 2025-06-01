@@ -1,3 +1,7 @@
+<script setup lang="ts">
+let origin = useRequestURL().origin
+</script>
+
 <template>
   <div>
     <header>
@@ -13,7 +17,7 @@
           This is a collection of hand crafted widgets for your stream.
         </p>
 
-        <a :href="origin + '/rtirl/test'">Test</a>
+<!--        <a :href="origin + '/rtirl/test'">Test</a>-->
       </div>
 
       <div>
@@ -23,7 +27,3 @@
     </main>
   </div>
 </template>
-<script setup lang="ts">
-let origin = useRequestURL().host
-
-</script>
