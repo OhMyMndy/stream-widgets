@@ -48,7 +48,7 @@ let url = ref(generateURL())
 
   <div class="mb-4">
     <p class="font-bold">{{ description }}</p>
-    <NuxtLink :href="url">{{ url }}</NuxtLink>
+    <a :href="url">{{ url }}</a>
     <iframe :src="url" class="w-full mt-2" style="height: 80px"></iframe>
 
   </div>
