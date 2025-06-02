@@ -1,4 +1,4 @@
-<script setup lang="ts" >
+<script setup lang="ts">
 
 import * as RealtimeIRL from '@rtirl/api';
 
@@ -76,14 +76,11 @@ async function setLocation(lat: number, lng: number) {
     location: new google.maps.LatLng(lat, lng),
   };
 
-  routeClasses.value = "bg-white outline-black text-black";
-  localityClasses.value = "bg-white outline-black text-black";
+  let routeClassesUpdated = false
 
   const result = extractData(await new Geocoder().geocode(request));
   console.log(result)
   route.value = result?.route?.route?.short_name;
-
-
   locality.value = result?.route?.locality?.short_name
 
   if (!locality.value) {
@@ -101,9 +98,15 @@ async function setLocation(lat: number, lng: number) {
   for (const [prefix, colorClass] of Object.entries(colorClasses)) {
     if (routeName.match(new RegExp(prefix))) {
       routeClasses.value = colorClass;
+      routeClassesUpdated = true
       break;
     }
   }
+
+  if (!routeClassesUpdated) {
+    routeClasses.value = "bg-white outline-black text-black";
+  }
+
 }
 
 type Location = {
@@ -135,15 +138,15 @@ if (props.id) {
 
 <template>
   <ClientOnly>
-  <div class="flex text-lg bg-transparent" :class="wrapperClasses ">
-    <div v-if="route" class="flex-none px-2 py-1 m-1 outline-4 rounded-md " :class="routeClasses">
-      {{ route }}
+    <div class="flex text-lg bg-transparent" :class="wrapperClasses ">
+      <div v-if="route" class="flex-none px-2 py-1 m-1 outline-4 rounded-md " :class="routeClasses">
+        {{ route }}
+      </div>
+      <div class="ml-2">
+        <div v-if="locality" class="flex-none px-2 py-1 m-1 font-bold outline-4 rounded-md " :class="localityClasses">
+          {{ locality }}
+        </div>
+      </div>
     </div>
-    <div class="ml-2">
-    <div v-if="locality" class="flex-none px-2 py-1 m-1 font-bold outline-4 rounded-md " :class="localityClasses">
-      {{ locality }}
-    </div>
-    </div>
-  </div>
   </ClientOnly>
 </template>
