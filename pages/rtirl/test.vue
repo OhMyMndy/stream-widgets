@@ -13,11 +13,11 @@
       <h1 class="text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-7xl mb-4">RT IRL widgets</h1>
 
 
-      <RtirlWidgetDemo description="Real time IRL for Twitch ID 885542539" id="885542539"/>
+      <RtirlWidgetDemo description="Real time IRL for Twitch ID 885542539" id="885542539" country="1"/>
 
 
 
-      <RtirlWidgetDemo description="Long street name and locality test" lat="50.673439" lng="4.558424"/>
+      <RtirlWidgetDemo description="Long street name and locality test" lat="50.673439" lng="4.558424" country="1"/>
 
 
       <RtirlWidgetDemo description="Belgian E-road test" lat="50.885804" lng="4.459308"/>
@@ -28,24 +28,24 @@
 
       <RtirlWidgetDemo description="Belgian N-road test" lat="51.310663" lng="4.430697"/>
 
-      <RtirlWidgetDemo description="Belgian regular street test" lat="51.205004" lng="4.433044"/>
+      <RtirlWidgetDemo description="Belgian regular street test" lat="51.205004" lng="4.433044" country="1" region="1"/>
 
-      <RtirlWidgetDemo description="French D-road test" lat="49.490363" lng="2.151408"/>
+      <RtirlWidgetDemo description="French D-road test" lat="49.490363" lng="2.151408" region="1" country="1"/>
 
       <RtirlWidgetDemo description="Dutch N-road test" lat="51.359333" lng="5.415079"/>
 
       <RtirlWidgetDemo description="Right align test" lat="51.359333" lng="5.415079" right="1"/>
 
 
-      <div class="relative bg-[url(~/public/images/truck-cabin-view.png)] bg-contain bg-no-repeat max-w-4xl mb-4">
-        <img src="../../public/images/truck-cabin-view.png"/>
-        <iframe :src="origin + '/rtirl?lat=51.242661&lng=4.690678&right=1'" class="absolute bottom-2 right-2" style="height: 44px" />
-      </div>
+<!--      <div class="relative bg-[url(~/public/images/truck-cabin-view.png)] bg-contain bg-no-repeat max-w-4xl mb-4">-->
+<!--        <img src="../../public/images/truck-cabin-view.png"/>-->
+<!--        <iframe :src="origin + 'rtirl?lat=51.242661&lng=4.690678&right=1'" class="absolute bottom-2 right-2" style="height: 44px" />-->
+<!--      </div>-->
 
-      <div class="relative bg-[url(~/public/images/truck-cabin-view.png)] bg-contain bg-no-repeat max-w-4xl">
-        <img src="../../public/images/truck-cabin-view.png"/>
-        <iframe :src="origin + '/rtirl?lat=51.242661&lng=4.690678&right=1'" class="absolute top-2 right-2" style="height: 44px" />
-      </div>
+<!--      <div class="relative bg-[url(~/public/images/truck-cabin-view.png)] bg-contain bg-no-repeat max-w-4xl">-->
+<!--        <img src="../../public/images/truck-cabin-view.png"/>-->
+<!--        <iframe :src="origin + 'rtirl?lat=51.242661&lng=4.690678&right=1'" class="absolute top-2 right-2" style="height: 44px" />-->
+<!--      </div>-->
 
 
     </ClientOnly>

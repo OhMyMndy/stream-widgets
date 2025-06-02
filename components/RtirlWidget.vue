@@ -8,7 +8,10 @@ const props = defineProps({
   id: {type: String, default: null},
   lat: {type: String, default: null},
   lng: {type: String, default: null},
-  right: {type: String, default: null}
+  right: {type: String, default: null},
+  region: {type: String, default: null},
+  country: {type: String, default: null}
+
 })
 
 if (props.right) {
@@ -19,6 +22,12 @@ const route = ref("");
 const locality = ref("")
 const routeClasses = ref("bg-white outline-black text-black");
 const localityClasses = ref("bg-white outline-black text-black");
+const regionClasses = ref("bg-white outline-black text-black");
+const region = ref("")
+const showRegion = props.region
+const country = ref("")
+const showCountry = props.country
+
 
 const colorMappingRoute: Record<string, Record<string, string>> = {
   "BE": {
@@ -47,6 +56,9 @@ const colorMappingLocality: Record<string, string> = {
   "NL": "bg-blue-700 outline-white text-white",
 }
 
+const colorMappingRegion: Record<string, string> = {
+  "BE": "bg-yellow-400 outline-red text-red-800"
+}
 
 function extractData(results: any) {
   const location_data: Record<string, Record<string, any>> = {};
@@ -81,17 +93,23 @@ async function setLocation(lat: number, lng: number) {
   const result = extractData(await new Geocoder().geocode(request));
   console.log(result)
   route.value = result?.route?.route?.short_name;
-  locality.value = result?.route?.locality?.short_name
+  locality.value = result?.route?.sublocality?.long_name
+  region.value = result?.route?.locality?.long_name
+  country.value = result?.route?.country?.long_name
 
   if (!locality.value) {
-    locality.value = result?.route?.administrative_area_level_2?.short_name
-
+    locality.value = result?.route?.locality?.long_name
+    region.value = result?.route?.administrative_area_level_2?.long_name
   }
+
+
+
   const countryShort = result.route?.country?.short_name;
   const routeName = result.route?.route?.short_name;
 
 
   localityClasses.value = colorMappingLocality[countryShort] || "bg-white outline-black text-black";
+  regionClasses.value = colorMappingRegion[countryShort] || "bg-white outline-black text-black";
 
   const colorClasses = colorMappingRoute[countryShort] || {};
 
@@ -145,6 +163,16 @@ if (props.id) {
       <div class="ml-2">
         <div v-if="locality" class="flex-none px-2 py-1 m-1 font-bold outline-4 rounded-md " :class="localityClasses">
           {{ locality }}
+        </div>
+      </div>
+      <div class="ml-2" v-if="showRegion">
+        <div v-if="region" class="flex-none px-2 py-1 m-1 font-bold outline-4 rounded-md " :class="regionClasses">
+          {{ region }}
+        </div>
+      </div>
+      <div class="ml-2" v-if="showCountry">
+        <div v-if="country" class="flex-none px-2 py-1 m-1 font-bold outline-4 rounded-md text-white bg-blue-700">
+          {{ country }}
         </div>
       </div>
     </div>

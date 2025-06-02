@@ -4,6 +4,8 @@ let id = "";
 let lat = "";
 let lng = "";
 let alignRight = "";
+let showRegion = "";
+let showCountry = "";
 
 if (window !== undefined) {
   const queryString = window.location.search;
@@ -14,13 +16,16 @@ if (window !== undefined) {
   lng = urlParams.get('lng') as string;
 
   alignRight = urlParams.get('right') as string;
+  showRegion = urlParams.get('region') as string;
+  showCountry = urlParams.get('country') as string;
+
 
 }
 </script>
 <template>
   <div class="bg-transparent h-full">
     <ClientOnly>
-      <RtirlWidget :id="id" :lat="lat" :lng="lng" :right="alignRight"/>
+      <RtirlWidget :id="id" :lat="lat" :lng="lng" :right="alignRight" :country="showCountry" :region="showRegion"/>
     </ClientOnly>
   </div>
 </template>

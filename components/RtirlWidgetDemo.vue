@@ -1,18 +1,20 @@
 <script setup lang="ts">
 const config = useRuntimeConfig();
-const origin = useRequestURL().origin + config.app.baseURL
-
+const origin = useRequestURL().origin +  config.app.baseURL
 
 const props = defineProps({
   id: {type: String, default: null},
   lat: {type: String, default: null},
   lng: {type: String, default: null},
   right: {type: String, default: null},
+  region: {type: String, default: null},
+  country: {type: String, default: null},
   description: {type: String, default: null}
 })
 
 function generateURL() {
   let url = new URL(origin + 'rtirl')
+
   let params = {}
   if (props.id) {
     params.id = props.id
@@ -26,8 +28,14 @@ function generateURL() {
   if (props.right) {
     params.right = props.right
   }
+  if (props.region) {
+    params.region = props.region
+  }
+  if (props.country) {
+    params.country = props.country
+  }
   url.search = new URLSearchParams(params).toString()
-  return url.toString()
+  return url.href
 }
 
 let url = ref(generateURL())
