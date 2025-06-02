@@ -20,10 +20,10 @@
       <RtirlWidgetDemo description="Long street name and locality test" lat="50.673439" lng="4.558424" country="1"/>
 
 
-      <RtirlWidgetDemo description="Belgian E-road test" lat="50.885804" lng="4.459308"/>
+      <RtirlWidgetDemo description="Belgian E-road test" lat="50.885804" lng="4.459308" text-size="large"/>
 
 
-      <RtirlWidgetDemo description="Belgian A-road test" lat="51.298262" lng="4.393667"/>
+      <RtirlWidgetDemo description="Belgian A-road test" lat="51.298262" lng="4.393667" text-size="small"/>
 
 
       <RtirlWidgetDemo description="Belgian N-road test" lat="51.310663" lng="4.430697"/>

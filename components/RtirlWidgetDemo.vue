@@ -9,7 +9,8 @@ const props = defineProps({
   right: {type: String, default: null},
   region: {type: String, default: null},
   country: {type: String, default: null},
-  description: {type: String, default: null}
+  description: {type: String, default: null},
+  textSize: {type: String, default: null}
 })
 
 function generateURL() {
@@ -34,6 +35,9 @@ function generateURL() {
   if (props.country) {
     params.country = props.country
   }
+  if (props.textSize) {
+    params.size = props.textSize
+  }
   url.search = new URLSearchParams(params).toString()
   return url.href
 }
@@ -44,8 +48,8 @@ let url = ref(generateURL())
 
   <div class="mb-4">
     <p class="font-bold">{{ description }}</p>
-    <i>{{ url }}</i>
-    <iframe :src="url" class="w-full" style="height: 44px"></iframe>
+    <NuxtLink :href="url">{{ url }}</NuxtLink>
+    <iframe :src="url" class="w-full mt-2" style="height: 80px"></iframe>
 
   </div>
   <div class="divider-black"></div>

@@ -10,13 +10,27 @@ const props = defineProps({
   lng: {type: String, default: null},
   right: {type: String, default: null},
   region: {type: String, default: null},
-  country: {type: String, default: null}
-
+  country: {type: String, default: null},
+  textSize: {type: String, default: null}
 })
 
 if (props.right) {
   wrapperClasses += " justify-end"
 }
+
+if (props.textSize) {
+  if (props.textSize == "small") {
+    wrapperClasses += " text-lg"
+  } else if (props.textSize == "medium") {
+    wrapperClasses += " text-2xl"
+  } else if (props.textSize == "large") {
+    wrapperClasses += " text-6xl"
+  }
+
+} else {
+  wrapperClasses += " text-2xl"
+}
+
 
 const route = ref("");
 const locality = ref("")
@@ -156,7 +170,7 @@ if (props.id) {
 
 <template>
   <ClientOnly>
-    <div class="flex text-lg bg-transparent" :class="wrapperClasses ">
+    <div class="flex bg-transparent " :class="wrapperClasses ">
       <div v-if="route" class="flex-none px-2 py-1 m-1 outline-4 rounded-md " :class="routeClasses">
         {{ route }}
       </div>
